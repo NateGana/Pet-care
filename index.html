@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PetCare – Pet Care & Appointment Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">🐾 PetCare</div>
+    <nav>
+      <button class="nav-btn active" data-view="dashboard">Dashboard</button>
+      <button class="nav-btn" data-view="pets">Pets</button>
+      <button class="nav-btn" data-view="appointments">Appointments</button>
+      <button class="nav-btn" data-view="vaccinations">Vaccinations</button>
+      <button class="nav-btn" data-view="reminders">Reminders</button>
+    </nav>
+  </aside>
+
+  <main>
+    <section id="dashboard" class="view active">
+      <h1>Dashboard</h1>
+      <div class="cards" id="stats"></div>
+      <div class="panel">
+        <h2>Upcoming Care</h2>
+        <ul class="list" id="upcomingList"></ul>
+      </div>
+    </section>
+
+    <section id="pets" class="view">
+      <div class="head"><h1>Pets</h1><button class="btn" data-act="add" data-kind="pet">+ Add Pet</button></div>
+      <div class="filters"><input type="search" id="searchPet" placeholder="Search by name, breed or owner…" aria-label="Search pets"></div>
+      <div class="pet-grid" id="petGrid"></div>
+    </section>
+
+    <section id="appointments" class="view">
+      <div class="head"><h1>Appointments</h1><button class="btn" data-act="add" data-kind="appt">+ Add Appointment</button></div>
+      <div class="filters">
+        <input type="search" id="searchAppt" placeholder="Search appointments…" aria-label="Search appointments">
+        <select id="filterStatus" aria-label="Filter by status">
+          <option value="">All statuses</option><option>Upcoming</option><option>Completed</option><option>Cancelled</option>
+        </select>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Pet</th><th>Type</th><th>Date</th><th>Time</th><th>Status</th><th>Notes</th><th>Actions</th></tr></thead>
+        <tbody id="apptBody"></tbody>
+      </table></div>
+    </section>
+
+    <section id="vaccinations" class="view">
+      <div class="head"><h1>Vaccination Records</h1><button class="btn" data-act="add" data-kind="vacc">+ Add Vaccination</button></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Pet</th><th>Vaccine</th><th>Date Given</th><th>Next Due</th><th>Notes</th><th>Actions</th></tr></thead>
+        <tbody id="vaccBody"></tbody>
+      </table></div>
+    </section>
+
+    <section id="reminders" class="view">
+      <div class="head"><h1>Care Reminders</h1><button class="btn" data-act="add" data-kind="rem">+ Add Reminder</button></div>
+      <ul class="list panel" id="remList"></ul>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <form class="modal-box" id="form">
+      <h2 id="formTitle"></h2>
+      <div id="formFields"></div>
+      <div class="actions">
+        <button type="button" class="btn ghost" data-close>Cancel</button>
+        <button class="btn">Save</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
